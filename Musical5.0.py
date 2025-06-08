@@ -2,7 +2,14 @@
 # coding: utf-8
 
 # In[5]:
+import streamlit as st
+st.set_page_config(layout="wide")
 
+def local_css(file_name):
+    with open(file_name, encoding="utf-8") as f:  # 添加 encoding 避免中文编码问题
+        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+
+local_css("style.css") 
 
 import streamlit as st
 import pandas as pd
@@ -24,158 +31,6 @@ st.set_page_config(
     page_icon="🥚",
     layout="wide"
 )
-
-# 自定义CSS样式
-st.markdown("""
-    <style>
-    html, body, [class*="css"] {
-        font-family: 'STZhongsong', 'SimSun', serif;
-    }
-    
-    .main {
-        background-color: #ffffff;
-    }
-    
-    /* 顶部横幅 */
-    .header-image {
-        width: 100%;
-        height: 450px;
-        object-fit: cover;
-        margin-bottom: 20px;
-        border-radius: 8px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-    
-    /* 轮播图样式 */
-    .carousel {
-        position: relative;
-        width: 100%;
-        height: 450px;
-        overflow: hidden;
-        border-radius: 8px;
-        margin-bottom: 20px;
-    }
-    
-    .carousel-inner {
-        display: flex;
-        transition: transform 0.5s ease;
-        height: 100%;
-    }
-    
-    .carousel-item {
-        min-width: 100%;
-        height: 100%;
-    }
-    
-    .carousel-item img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-    
-    /* 卡片样式 */
-    .musical-card {
-        border-radius: 8px;
-        padding: 20px;
-        margin-bottom: 20px;
-        background-color: #fff5f5;
-        border-left: 5px solid #d23c3c;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-        transition: transform 0.2s;
-    }
-    
-    .musical-card:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    }
-    
-    .musical-title {
-        color: #8c1a1a;
-        font-weight: bold;
-        font-size: 1.5em;
-        margin-bottom: 10px;
-    }
-    
-    .theater-name {
-        color: #d23c3c;
-        font-weight: bold;
-        font-size: 1.1em;
-        margin: 8px 0;
-    }
-    
-    /* 按钮样式 */
-    .stButton>button {
-        background-color: #d23c3c;
-        color: white;
-        border-radius: 5px;
-        padding: 8px 16px;
-        border: none;
-        font-weight: bold;
-        transition: background-color 0.3s;
-    }
-    
-    .stButton>button:hover {
-        background-color: #991a1a;
-        color: white;
-    }
-    
-    /* 侧边栏样式 */
-    [data-testid="stSidebar"] {
-        background-color: #fff0f0;
-    }
-    
-    /* 选项卡样式 */
-    [role="tab"] {
-        font-weight: bold;
-        color: #d23c3c;
-        padding: 8px 16px;
-    }
-    
-    [aria-selected="true"] {
-        color: #8c1a1a !important;
-        border-bottom: 3px solid #d23c3c;
-    }
-    
-    /* 标题样式 */
-    h1 {
-        color: #8c1a1a !important;
-        border-bottom: 2px solid #d23c3c;
-        padding-bottom: 10px;
-    }
-    
-    /* 表单样式 */
-    .stTextInput>div>div>input, 
-    .stTextArea>div>div>textarea,
-    .stDateInput>div>div>input,
-    .stTimeInput>div>div>input {
-        border: 1px solid #ffd0d0;
-        border-radius: 4px;
-    }
-    
-    /* 表格样式 */
-    .stDataFrame {
-        border: 1px solid #ffd0d0;
-        border-radius: 8px;
-    }
-    
-    /* 演员介绍卡片 */
-    .actor-card {
-        border-radius: 8px;
-        padding: 20px;
-        margin: 20px 0;
-        background-color: #f8f8f8;
-        border-left: 5px solid #8c1a1a;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-    
-    .actor-name {
-        color: #8c1a1a;
-        font-size: 1.8em;
-        font-weight: bold;
-        margin-bottom: 10px;
-    }
-    </style>
-    """, unsafe_allow_html=True)
 
 # 顶部轮播图
 header_images = [
